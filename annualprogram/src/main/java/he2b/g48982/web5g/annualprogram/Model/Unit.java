@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Set;
 
 @Entity
@@ -27,7 +28,7 @@ public class Unit {
     @Max(value = 6,message = "cannot be lower than 6")
     private Integer semester;
     @NotNull
-    @Min(value = 1,message = "must be greater than 0")
+    @Positive
     private Integer ects;
 
     @ElementCollection(targetClass = Section.class)
