@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layout}">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+  <title>Page d'accueil</title>
+</head>
+
+<body>
+
+
+
+
+  <main layout:fragment="content">
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-body " id="items">
+            <h3 class="border border-primary rounded"><a th:href="@{/courses}" th:text="#{courses.listeCours}">Liste des Cours</a></h3>
+            <h3 class="border border-primary rounded"><a th:href="@{/students}" th:text="#{courses.listeEtudiants}">Liste des étudiants</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+   <!-- <div layout:fragment="connecteduser">
+      <span th:if="${user} != anonymousUser"   th:text="${'connected as : '+ user}" ></span>
+    </div>-->
+  </main>
+
+
+</body>
+
+</html>

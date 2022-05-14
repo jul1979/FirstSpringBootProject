@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layout}" >
+
+<head>
+ <!-- <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+  <title>liste des cours et des étudiants</title>-->
+</head>
+
+<body>
+
+  <div>Bienvenue sur le site de gestion du programme annuel des étudiants</div>
+
+  <main layout:fragment="content">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header" th:text="#{courses.listeCours}">LISTE DES COURS</div>
+          <div class="card-body">
+            <div th:if="${not #lists.isEmpty(courses)}">
+              <table class="table table-success table-striped">
+                <caption></caption>
+                <tr>
+                  <th th:text="#{courses.sigle}">Sigle</th>
+                  <th th:text="#{courses.titre}">Titre</th>
+                  <th th:text="#{courses.ects}">ECTS</th>
+                </tr>
+
+                <tr th:each="course:${courses}">
+                  <td>
+                    <a th:text="${#strings.toUpperCase(course.id)}" th:href="@{/courses/{id}/details(id=${course.id})}">
+                      Sigle </a>
+                  </td>
+                  <td>
+                    <a th:text="${#strings.toUpperCase(course.title)}"
+                      th:href="@{/courses/{id}/details(id=${course.id})}">titre</a>
+                  </td>
+                  <td th:text="${course.credits}">ECTS</td>
+                </tr>
+              </table>
+            </div>
+            <div th:if="${#lists.isEmpty(courses)}">
+              <p>Aucun Cours</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header" th:text="#{titre.formulaire}">Ajouter un Cours</div>
+          <div class="card-body">
+            <form th:action="@{/addCourse}" th:object="${newCourse}" method="post">
+              <div class="mb-3">
+                <label for="sigle">Sigle : </label>
+                <input type="text" id="sigle" th:field="*{id}">
+                <span th:errors="*{id}" class="text-danger"></span>
+              </div>
+              <div class="mb-3">
+                <label for="titre">Titre :</label>
+                <input type="text" id="titre" th:field="*{title}">
+                <span th:errors="*{title}" class="text-danger"></span>
+              </div>
+              <div class="mb-3">
+                <label for="ects">ECTS :</label>
+                <input type="number" id="ects" th:field="*{credits}">
+                <span th:errors="*{credits}" class="text-danger"></span>
+
+
+              </div>
+              <button type="submit" class="btn btn-primary" th:text="#{bouton.ajouter}" sec:authorize="isAnonymous()">Ajouter</button>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>
