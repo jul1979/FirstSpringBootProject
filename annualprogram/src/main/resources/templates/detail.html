@@ -77,77 +77,42 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" layout:fragment="topleft">
-                <h2>Liste des Etudiants</h2>
+                <h2>Fiche étudiant</h2>
+                <p th:text="${student.number + '-' + student.name + '-' +student.section.getCharacter() +'-'+ 'bloc ' + student.bloc }"></p>
                 <table class="table table-hover">
                     <caption></caption>
                     <thead>
                     <tr>
-                        <th scope="col" >Numéro</th>
-                        <th scope="col"  >Nom</th>
-                        <th scope="col">Section</th>
-                        <th scope="col">Bloc
+                        <th scope="col"  >ID</th>
+                        <th scope="col" >INTITULE</th>
+                        <th scope="col">ECTS</th>
+                        <th scope="col">QUADRI</th>
+                        <th scope="col">OBLIGATOIRE</th>
+
                     </thead>
                     <tbody>
 
-                    <tr class="table-active" th:each="student : ${students}">
-                        <td>
-                            <a th:href="@{/detail(number=${student.number})}" th:text="${student.number}" ></a>
+                    <tr class="table-active" th:each="course:${courses}" >
+
+                        <td  th:text="${course.id}" class="text-center">
                         </td>
-                        <td  th:text="${student.name}">
+                        <td  th:text="${course.title}" class="text-center">
                         </td>
-                        <td  th:text="${student.section}">
+                        <td  th:text="${course.getECTS()}" class="text-center">
                         </td>
-                        <td  th:text="${student.bloc}">
+                        <td  th:text="${course.semester}" class="text-center">
+                        </td>
+                        <td  th:if="${course.mandatory}" class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-
             </div>
             <div class="col-md-6"  layout:fragment="topright">
-                <form th:action="@{/filter}" method="post" th:object="${student}">
-                    <div class="form-row align-items-center">
-                        <div class="col-auto my-1">
-                            <label class="mr-sm-2" for="section">SECTION</label>
-                            <select class="custom-select mr-sm-2" id="section"  th:field="*{section}" th:name="section">
-                                <option th:value="TOUS">TOUS</option>
-                                <option th:value="GESTION">GESTION</option>
-                                <option th:value="INDUSTRIELLE">INDUSTRIELLE</option>
-                                <option th:value="RESEAU">RESEAU</option>
-                            </select>
-                        </div>
 
-                        <div class="col-auto my-1">
-                            <label class="mr-sm-2" for="section">BLOC</label>
-                            <select class="custom-select mr-sm-2" id="bloc" th:field="*{bloc}" th:name="bloc">
-                                <option th:value="0">TOUS</option>
-                                <option th:value="1">1</option>
-                                <option th:value="2">2</option>
-                                <option th:value="3">3</option>
-                            </select>
-                        </div>
-
-
-                        <div class="col-auto my-1">
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="text" class="custom-control-input" id="numero" th:field="*{number}" th:name="number">
-                                <label class="custom-control-label" for="numero">Numero</label>
-                            </div>
-                        </div>
-                        <div class="col-auto my-1">
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="text" class="custom-control-input" id="nom" th:field="*{name}"  th:name="name">
-                                <label class="custom-control-label" for="nom">Partie du Nom</label>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-primary">Filtrer</button>
-                        </div>
-                    </div>
-                </form>
 
 
             </div>
