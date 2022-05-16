@@ -25,6 +25,7 @@ public class Student {
     @Min(value = 1 ,message = "cannot be lower than 1")
     @Max(value = 3,message = "cannot be lower than 3")
     private Integer bloc;
+    @Convert(converter = SectionConverter.class)
     private Section section;
 
 

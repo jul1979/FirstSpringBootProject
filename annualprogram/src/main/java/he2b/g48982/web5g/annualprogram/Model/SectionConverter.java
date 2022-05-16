@@ -1,8 +1,6 @@
 package he2b.g48982.web5g.annualprogram.Model;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 @Converter(autoApply = true)
 public class SectionConverter implements AttributeConverter<Section, String> {
@@ -13,7 +11,7 @@ public class SectionConverter implements AttributeConverter<Section, String> {
         if (attribute == null) {
             return null;
         }
-        return attribute.name();
+        return attribute.getCharacter().toString();
     }
 
     @Override
@@ -21,8 +19,14 @@ public class SectionConverter implements AttributeConverter<Section, String> {
         if (dbData == null) {
             return null;
         }
-        return Stream.of(Section.values()).filter(c -> Objects.equals(c.name(), dbData)).findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+        switch (dbData) {
+            case "G":
+                return Section.GESTION;
+            case "I":
+                return Section.INDUSTRIELLE;
+            case "R":
+                return Section.RESEAU;
+        }
+        return null;
     }
-
 }
