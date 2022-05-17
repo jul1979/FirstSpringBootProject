@@ -31,10 +31,10 @@ public class StudentService {
         Predicate<Student> studentsection = s -> s.getSection().name().equals(section);
         final int blocAsInt = Integer.parseInt(bloc);
         Predicate<Student> studentbloc = s -> s.getBloc().equals(blocAsInt);
-        if (!name.isEmpty()) {
+        if (name!=null && !name.isEmpty()) {
             studentsSorted=findStudentsByNameStartingWith(name);
         }
-            if (!number.isEmpty()) {
+            if (number!=null && !number.isEmpty()) {
                 studentsSorted = studentsSorted
                         .stream()
                         .filter(s -> s.getNumber() == Integer.parseInt(number))
