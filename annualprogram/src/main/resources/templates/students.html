@@ -77,15 +77,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" layout:fragment="topleft">
-                <h2>Liste des Etudiants</h2>
+                <h2 th:text="#{students.list}"></h2>
                 <table class="table table-hover">
                     <caption></caption>
                     <thead>
                     <tr>
-                        <th scope="col" >Numéro</th>
-                        <th scope="col"  >Nom</th>
-                        <th scope="col">Section</th>
-                        <th scope="col">Bloc
+                        <th scope="col" th:text="#{students.numero}">Numéro</th>
+                        <th scope="col" th:text="#{students.Nom}" >Nom</th>
+                        <th scope="col"th:text="#{students.Section}">Section</th>
+                        <th scope="col"th:text="#{students.Bloc}">Bloc
                     </thead>
                     <tbody>
 
@@ -108,7 +108,7 @@
                 <form th:action="@{/filter}" method="post" th:object="${student}">
                     <div class="form-row align-items-center">
                         <div class="col-auto my-1">
-                            <label class="mr-sm-2" for="section">SECTION</label>
+                            <label class="mr-sm-2" for="section" th:text="#{students.Section}">SECTION</label>
                             <select class="custom-select mr-sm-2" id="section"  th:field="*{section}" th:name="section">
                                 <option th:value="TOUS">TOUS</option>
                                 <option th:value="GESTION">GESTION</option>
@@ -118,7 +118,7 @@
                         </div>
 
                         <div class="col-auto my-1">
-                            <label class="mr-sm-2" for="section">BLOC</label>
+                            <label class="mr-sm-2" for="section" th:text="#{students.Bloc}">BLOC</label>
                             <select class="custom-select mr-sm-2" id="bloc" th:field="*{bloc}" th:name="bloc">
                                 <option th:value="0">TOUS</option>
                                 <option th:value="1">1</option>
@@ -130,14 +130,14 @@
 
                         <div class="col-auto my-1">
                             <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="text" class="custom-control-input" id="numero" th:field="*{number}" th:name="number">
-                                <label class="custom-control-label" for="numero">Numero</label>
+                                <input type="text" class="custom-control-input" id="numero" th:field="*{number}" th:name="number" >
+                                <label class="custom-control-label" for="numero" th:text="#{students.numero}">Numero</label>
                             </div>
                         </div>
                         <div class="col-auto my-1">
                             <div class="custom-control custom-checkbox mr-sm-2">
                                 <input type="text" class="custom-control-input" id="nom" th:field="*{name}"  th:name="name">
-                                <label class="custom-control-label" for="nom">Partie du Nom</label>
+                                <label class="custom-control-label" for="nom" th:text="#{students.Nom}">Partie du Nom</label>
                             </div>
                         </div>
 

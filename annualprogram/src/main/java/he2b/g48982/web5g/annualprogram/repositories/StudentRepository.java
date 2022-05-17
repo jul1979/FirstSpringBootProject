@@ -15,11 +15,6 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     List<Student> findByNameStartingWith(@Param("name") String name);
     List<Student> findByBloc(Integer bloc);
 
-    //SELECT a, b FROM Author a JOIN a.books b
-
-   // SELECT b, p FROM Book b, Publisher p WHERE b.fk_publisher = p.id
-
-    //SELECT a, b FROM Author a JOIN a.books b
     @Query("select NEW he2b.g48982.web5g.annualprogram.dto.StudentDto( u.id,u.title,u.ects,u.semester,r.mandatory) from Registration r join r.annualProgram a join a.student s join r.unit u where s.number=?1 ")
    List <StudentDto> studentDetail(Integer studentID);
 

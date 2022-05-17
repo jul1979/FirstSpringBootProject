@@ -20,29 +20,19 @@ public class StudentService {
 
     public List<Student> allStudents() {
         Iterable<Student> iterable = studentRepository.findAll();
-        List<Student> studentArrayList = Lists.newArrayList(iterable);
-        return studentArrayList;
+        return Lists.newArrayList(iterable);
     }
     private  List<Student> findStudentsByNameStartingWith(String name){
         return studentRepository.findByNameStartingWith(name);
     }
 
-    private List<Student> findByBloc(String bloc){
-      return studentRepository.findByBloc(Integer.parseInt(bloc));
-    }
-
-
-
     public List<Student> filter(String number, String name, String section, String bloc) {
         List<Student> studentsSorted = Lists.newArrayList(studentRepository.findAll());
-        Predicate<Student> startWith = s -> s.getName().startsWith(name.toUpperCase());
         Predicate<Student> studentsection = s -> s.getSection().name().equals(section);
-        Predicate<Student> studentbloc = s -> s.getBloc().equals(Integer.parseInt(bloc));
+        final int blocAsInt = Integer.parseInt(bloc);
+        Predicate<Student> studentbloc = s -> s.getBloc().equals(blocAsInt);
         if (!name.isEmpty()) {
-           // studentsSorted=findStudentsByNameStartingWith(name);
-             studentsSorted = studentsSorted.stream()
-                    .filter(startWith)
-                    .collect(Collectors.toList());
+            studentsSorted=findStudentsByNameStartingWith(name);
         }
             if (!number.isEmpty()) {
                 studentsSorted = studentsSorted
@@ -50,28 +40,23 @@ public class StudentService {
                         .filter(s -> s.getNumber() == Integer.parseInt(number))
                         .collect(Collectors.toList());
             }
-
-            if (!section.isEmpty() && !section.equalsIgnoreCase("tous")) {
+            if ( !section.equalsIgnoreCase("tous")) {
                 studentsSorted = studentsSorted
                         .stream()
                         .filter(studentsection)
                         .collect(Collectors.toList());
             }
-
-            if (!bloc.isEmpty() && !bloc.equalsIgnoreCase("tous")){
-                studentsSorted=findByBloc(bloc);
-               /* studentsSorted = studentsSorted
+            if (blocAsInt!=0){
+                studentsSorted = studentsSorted
                         .stream()
                         .filter(studentbloc)
-                        .collect(Collectors.toList());*/
+                        .collect(Collectors.toList());
             }
             return studentsSorted;
-
     }
    public Student findById(Integer number){
         return studentRepository.findById(number).get();
     }
-
 
     public List<StudentDto> studentDetail(Integer studentID){
        return studentRepository.studentDetail(studentID);

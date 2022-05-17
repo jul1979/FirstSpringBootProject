@@ -33,15 +33,10 @@ public class StudentController {
                            @RequestParam (value="bloc",required = false)String bloc
                             , Model model) {
 
-      /*  public String addStory(@ModelAttribute (name="student")Student student){*/
-        System.out.println("Filters:");
+       /* System.out.println("Filters:");
         System.out.println( "numero: "+ number+ "nom:" + name + "section: "+ section
-                + "bloc: "  + bloc);
-        /*System.out.println( "numero: "+ student.getNumber() + "nom:" + student.getName() + "section: "+ student.getSection()
-                + "bloc: " + student.getBloc());*/
-        //int num = number.isPresent()?Integer.parseInt(number.get()):null;
+                + "bloc: "  + bloc);*/
 
-        //model.addAttribute("students",studentService.findByNameAndNumber(name,num));
         model.addAttribute("students",studentService.filter(number,name,section,bloc));
         return "students";
 

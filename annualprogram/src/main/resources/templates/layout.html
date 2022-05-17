@@ -24,7 +24,7 @@
 
 
         <div class="d-flex justify-content-center" >
-            <h1> Programme enrichi des etudiants</h1>
+            <h1 th:text="#{layout.titreprincipale}"> </h1>
         </div>
 
     </div>
@@ -46,10 +46,17 @@
 
 
                     <li class="nav-item">
+                        <span th:text="#{lang.change}"></span>
+                        <p th:text="${#locale.language}"></p>
+                        <span th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder)}">
+    <a th:href="${urlBuilder.fromCurrentRequest().replaceQueryParam('lang', 'fr').toUriString()}" class="text-white bg-dark" th:text="#{lang.fr}"></a>
+    <a th:href="${urlBuilder.fromCurrentRequest().replaceQueryParam('lang', 'en').toUriString()}" class="text-white bg-dark" th:text="#{lang.eng}"></a>
+    </span>
 
 
 
-                </li>
+
+                    </li>
 
                 </ul>
                 <form class="d-flex">
