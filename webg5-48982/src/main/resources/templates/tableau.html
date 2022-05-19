@@ -133,7 +133,14 @@
                             </span>
                         </td>
 
-                        <td th:switch="${#lists.contains(student.tasks, 'Exercice5')}">
+
+                    </thead>
+                    <tbody>
+
+
+                    <tr class="table-active" th:each="student:${students}">
+                        <td th:text="${student.name}"></td>
+                        <td th:switch="${#lists.contains(student.tasks, 'Exercice1')}">
 
                             <span th:case="true">
                                  <input class="form-check-input" type="checkbox" value=""  checked disabled>
@@ -142,6 +149,38 @@
                                  <input class="form-check-input" type="checkbox" value="" disabled>
                             </span>
                         </td>
+                        <td th:switch="${#lists.contains(student.tasks, 'Exercice2')}">
+
+                            <span th:case="true">
+                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
+                            </span>
+                            <span th:case="false" >
+                                 <input class="form-check-input" type="checkbox" value="" disabled>
+                            </span>
+                        </td>
+
+                        <td th:switch="${#lists.contains(student.tasks, 'Exercice3')}">
+
+                            <span th:case="true">
+                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
+                            </span>
+                            <span th:case="false" >
+                                 <input class="form-check-input" type="checkbox" value="" disabled>
+                            </span>
+                        </td>
+
+                        <td th:switch="${#lists.contains(student.tasks, 'Exercice4')}">
+
+                            <span th:case="true">
+                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
+                            </span>
+                            <span th:case="false" >
+                                 <input class="form-check-input" type="checkbox" value="" disabled>
+                            </span>
+                        </td>
+
+                        <td th:switch="${#lists.contains(student.tasks, 'Exercice5')}">
+
 
 
                     </tr>
