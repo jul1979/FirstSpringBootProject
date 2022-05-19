@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class StudentService {
@@ -29,5 +30,9 @@ public class StudentService {
             studentDtos.add(new StudentDto(student.getName(),strings));
         }
         return studentDtos;
+    }
+
+    public StudentDto studentListBYId(String name){
+       return studentList().stream().filter(s-> Objects.equals(s.getName(), name)).findFirst().get();
     }
 }
