@@ -1,6 +1,7 @@
 package he2b.g48982.web5g.annualprogram.services;
 
 import com.google.common.collect.Lists;
+import he2b.g48982.web5g.annualprogram.Model.Section;
 import he2b.g48982.web5g.annualprogram.Model.Student;
 import he2b.g48982.web5g.annualprogram.dto.StudentDto;
 import he2b.g48982.web5g.annualprogram.repositories.StudentRepository;
@@ -61,6 +62,15 @@ public class StudentService {
     public List<StudentDto> studentDetail(Integer studentID){
        return studentRepository.studentDetail(studentID);
     }
+
+   /* public List<StudentDto>   coursesBySection(Integer studentID){
+        return studentRepository.coursesBySection(studentID);
+    }*/
+
+    public List<StudentDto>   coursesBySection(Section section){
+        return studentRepository.studentCourses(section);
+    }
+
 
 
 }

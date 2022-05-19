@@ -1,6 +1,7 @@
 package he2b.g48982.web5g.annualprogram.web;
 
 
+import he2b.g48982.web5g.annualprogram.Model.Section;
 import he2b.g48982.web5g.annualprogram.Model.Student;
 import he2b.g48982.web5g.annualprogram.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,17 @@ public class StudentController {
          int numberAsInt = Integer.parseInt(number);
          model.addAttribute("student",studentService.findById(numberAsInt));
          model.addAttribute("courses",studentService.studentDetail(numberAsInt));
-         System.out.println("numberAsInt :" +numberAsInt);
          return "detail";
+    }
+
+    @GetMapping("/edit")
+    public String edit(@RequestParam (name="number") String number,
+                       Model model,@RequestParam (name="section") String section ){
+        int numberAsInt = Integer.parseInt(number);
+        model.addAttribute("student",studentService.findById(numberAsInt));
+        //model.addAttribute("courses",studentService.coursesBySection(numberAsInt));
+        model.addAttribute("courses",studentService.coursesBySection(Section.valueOf(section)));
+        return "programme";
     }
 
 }

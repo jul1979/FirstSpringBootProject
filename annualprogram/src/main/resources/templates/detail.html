@@ -91,6 +91,7 @@
 
 
 
+
                     </thead>
                     <tbody>
 
@@ -104,16 +105,28 @@
                         </td>
                         <td  th:text="${course.semester}" class="text-center">
                         </td>
-                        <td  th:if="${course.mandatory}" class="text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
-                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                            </svg>
+                        <td th:switch="${course.mandatory}" class="text-center">
+                            <span th:case="true">
+                        <img src="../static/images/check2.svg" th:src="@{/images/check2.svg}" alt="nothing">
+                            </span>
+                            <span th:case="false" >
+                                <img src="../static/images/x-lg.svg" th:src="@{/images/x-lg.svg}" alt="nothing">
+                            </span>
+
                         </td>
+
+
+
+
+
+
+
 
 
                     </tr>
                     </tbody>
                 </table>
+                <a th:href="@{/edit(number=${student.number},section=${student.section})}" class="btn btn-primary btn-lg" tabindex="-1" role="button" >Editer</a>
             </div>
             <div class="col-md-6"  layout:fragment="topright">
 

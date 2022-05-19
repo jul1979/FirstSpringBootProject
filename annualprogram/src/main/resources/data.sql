@@ -451,4 +451,6 @@ INSERT INTO Registration (id,mandatory,annual_program_id,unit_id) VALUES (299,tr
 
 INSERT INTO Registration (id,mandatory,annual_program_id,unit_id) VALUES (301,false,1,'CAI1');
 
+
+
 ALTER SEQUENCE hibernate_sequence restart with 1000;
