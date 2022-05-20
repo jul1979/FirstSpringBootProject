@@ -87,59 +87,16 @@
                         <th scope="col" >EX3</th>
                         <th scope="col" >EX4</th>
                         <th scope="col" >EX5</th>
+                    </tr>
                     </thead>
-                    <tbody>
 
-                    <tr class="table-active" th:each="student:${students}">
-                        <td>
-                            <a th:href="@{/detail(name=${student.name})}" th:text="${student.name}" ></a>
-                        </td>
-                        <td th:switch="${#lists.contains(student.tasks, 'Exercice1')}">
-
-                            <span th:case="true">
-                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
-                            </span>
-                            <span th:case="false" >
-                                 <input class="form-check-input" type="checkbox" value="" disabled>
-                            </span>
-                        </td>
-                        <td th:switch="${#lists.contains(student.tasks, 'Exercice2')}">
-
-                            <span th:case="true">
-                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
-                            </span>
-                            <span th:case="false" >
-                                 <input class="form-check-input" type="checkbox" value="" disabled>
-                            </span>
-                        </td>
-
-                        <td th:switch="${#lists.contains(student.tasks, 'Exercice3')}">
-
-                            <span th:case="true">
-                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
-                            </span>
-                            <span th:case="false" >
-                                 <input class="form-check-input" type="checkbox" value="" disabled>
-                            </span>
-                        </td>
-
-                        <td th:switch="${#lists.contains(student.tasks, 'Exercice4')}">
-
-                            <span th:case="true">
-                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
-                            </span>
-                            <span th:case="false" >
-                                 <input class="form-check-input" type="checkbox" value="" disabled>
-                            </span>
-                        </td>
-
-
-                    </thead>
                     <tbody>
 
 
                     <tr class="table-active" th:each="student:${students}">
-                        <td th:text="${student.name}"></td>
+                        <td >
+                            <a th:text="${student.name}" th:href="@{detail/(name=${student.name})}"></a>
+                        </td>
                         <td th:switch="${#lists.contains(student.tasks, 'Exercice1')}">
 
                             <span th:case="true">
