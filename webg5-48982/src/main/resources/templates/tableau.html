@@ -95,7 +95,7 @@
 
                     <tr class="table-active" th:each="student:${students}">
                         <td >
-                            <a th:text="${student.name}" th:href="@{detail/(name=${student.name})}"></a>
+                            <a th:text="${student.name}" th:href="@{detail/(id=${student.id})}"></a>
                         </td>
                         <td th:switch="${#lists.contains(student.tasks, 'Exercice1')}">
 
@@ -137,6 +137,14 @@
                         </td>
 
                         <td th:switch="${#lists.contains(student.tasks, 'Exercice5')}">
+
+                         <span th:case="true">
+                                 <input class="form-check-input" type="checkbox" value=""  checked disabled>
+                            </span>
+                            <span th:case="false" >
+                                 <input class="form-check-input" type="checkbox" value="" disabled>
+                            </span>
+                        </td>
 
 
 
