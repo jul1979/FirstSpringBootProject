@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -46,5 +47,15 @@ public class StudentService {
      Task task = taskRepository.findById(taskId).get();
      studentToUpdate.getTasks().add(task);
      studentRepository.save(studentToUpdate);
+    }
+
+    public List<Long> StudentCompleTasks(){
+        int taskSize = Lists.newArrayList(taskRepository.findAll()).size();
+        List<Long> studentNumbers = Lists.newArrayList(studentRepository.findAll())
+                .stream()
+                .filter(student -> student.getTasks().size() == taskSize)
+                .map(Student::getNumber)
+                .collect(Collectors.toList());
+        return studentNumbers;
     }
 }

@@ -40,8 +40,6 @@ public class StudentController {
         Long sNumberAsInt = Long.parseLong(sNumber);
         studentService.updateStudent(sNumberAsInt,taskId);
         return detail( sNumber, model);
-
-
     }
 
 
