@@ -5,19 +5,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.8</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>heb.esi</groupId>
-	<artifactId>webg5-48982</artifactId>
+	<artifactId>webg5-g12345</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webg5-48982</name>
-	<description>Tasks</description>
+	<name>webg5-g12345</name>
+	<description>Repository exam</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -26,11 +25,12 @@
 		</dependency>
 
 
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		<!--
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-security</artifactId>
+                </dependency>
+        -->
 
 
 		<dependency>
@@ -130,7 +130,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 
 	</dependencies>
 
