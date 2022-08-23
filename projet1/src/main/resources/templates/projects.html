@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout.html}"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+<main>
+
+    <span layout:fragment="title" th:text="#{projets.list }"></span>
+    <div class="col" layout:fragment="topleft">
+        <table class="table table-success">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Nb Sprints</th>
+                <th scope="col">Actif</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="project : ${projects}">
+                <td>
+                    <a th:href="@{detail/{id}(id=${project.nom})}" th:text="${project.nom}"></a>
+                </td>
+                <td th:text="${project.nbSprints}"></td>
+                <td th:text="${project.actif}?'EN COURS': 'TERMINE' "></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+</body>
+</html>

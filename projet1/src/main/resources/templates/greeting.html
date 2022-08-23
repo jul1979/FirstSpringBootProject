@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout.html}"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+<main>
+
+    <span layout:fragment="title">EXAMPLE DE LAYOUTS</span>
+    <div class="col" layout:fragment="topleft">
+        <table class="table table-success">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td >Larry </td>
+                <td >the Bird </td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+    <div class="col" layout:fragment="topright">
+        <form method="post" th:action="@{/addPerson}"  th:object="${person}">
+            <div class="mb-3">
+                <label for="firstname" class="form-label">FirstName</label>
+                <input type="text" class="form-control " id="firstname" th:field="*{firstname}"  >
+                <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger">No firstname</p>
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">LastName</label>
+                <input type="text" class="form-control "  id="lastname" th:field="*{lastName}"  >
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">No firstname</p>
+            </div>
+            <div class="input-group mb-3">
+                <label for="country-select">Choose a country:</label>
+                <select class="custom-select" id="country-select" th:field="*{country}"  >
+                    <option value="Germany">Germany</option>
+                    <option value="USA">USA</option>
+                    <option value="Belgium">Belgium</option>
+                </select>
+            </div>
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active" >
+                    <input type="radio"  th:field="*{sexe}" th:value="MALE" name="options" id="option1" autocomplete="off" > MALE
+                </label>
+                <label class="btn btn-secondary" >
+                    <input type="radio"  th:field="*{sexe}"  th:value="FEMALE" name="options" id="option2" autocomplete="off"> FEMALE
+                </label>
+
+            </div>
+            <br><br>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" id="checkbox3" th:name="regions"  class="btn-check" th:value="valeur1" />
+                <label class="btn btn-outline-primary" for="checkbox3">choix1</label>
+                <input type="checkbox" id="checkbox2" class="btn-check" th:name="regions" th:value="valeur2" />
+                <label class="btn btn-outline-primary" for="checkbox2">choix2</label>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</main>
+
+</body>
+</html>

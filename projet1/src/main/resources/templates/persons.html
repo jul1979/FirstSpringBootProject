@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout.html}"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <span layout:fragment="title">LISTE DES PERSONNES</span>
+
+    <div class="col" layout:fragment="topleft">
+        <table  class="table table-dark">>
+            <thead>
+            <tr>
+                <td>FirstName</td>
+                <td>LastName</td>
+
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.firstname}"></td>
+                <td th:text="${person.lastName}" ></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+
+<!--        <span th:text="${principalName}"></span>-->
+        
+    </div>
+
+</main>
+</body>
+</html>

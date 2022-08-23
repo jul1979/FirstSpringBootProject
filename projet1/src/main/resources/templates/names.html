@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout.html}"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+<main>
+
+    <span layout:fragment="title">PEOPLE LAST NAMES</span>
+    <div class="col" layout:fragment="topleft">
+        <table class="table table-success">
+            <thead>
+            <tr>
+                <th scope="col">LAST NAME</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sb : ${names}" >
+            <td th:text="${sb.lastName}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+</body>
+</html>

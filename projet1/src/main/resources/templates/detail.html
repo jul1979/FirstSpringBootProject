@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout.html}"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+<main>
+    <span layout:fragment="title" th:text="'Detail du project'  + ' ' +  ${pname}">Detail du project</span>
+    <div class="col" layout:fragment="topleft">
+        <p th:if="${message == 'false'}" class="text-danger">PROJET CLOTURE</p>
+        <a th:href="@{/scrum/projects}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
+        <br>
+        <table class="table table-success">
+            <thead>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Sprint</th>
+                <th scope="col">Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="info : ${infos}">
+                <td th:text="${info.titre}"></td>
+                <td th:text="${info.sprint}"></td>
+                <td th:text="${info.points}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <br><br>
+
+        <a th:href="@{/scrum/form/{id}(id=${pname})}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ajouter une histoire</a>
+
+    </div>
+</main>
+
+</body>
+</html>

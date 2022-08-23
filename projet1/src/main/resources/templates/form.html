@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout.html}"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+<main>
+    <div class="col" layout:fragment="topleft">
+
+            <form th:object="${story}"
+                  th:action="@{/scrum/form(name=${pname})}"
+                  method="post">
+            <div class="form-group">
+                <label for="title">Story title</label>
+                <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="title">
+            </div>
+            <div class="form-group">
+                <label for="estimate">estimate</label>
+                <input type="number" class="form-control" th:field="*{estimate}" id="estimate">
+                <p th:if="${#fields.hasErrors('estimate')}" th:errors="*{estimate}" class="text-danger"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+    </div>
+
+
+</main>
+
+</body>
+</html>
